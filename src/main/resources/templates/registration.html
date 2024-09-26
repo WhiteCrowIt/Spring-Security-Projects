@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>BPNG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <!-- Style css -->
+    <link href="css/style.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/registry.css">
+
+</head>
+
+<body>
+
+<section class="h-screen flex items-center justify-center bg-no-repeat inset-0 bg-cover bg-[url('../images/bg-2.png')]">
+    <div class="container 2xl:px-80 xl:px-52">
+        <div class="bg-white rounded-lg overflow-hidden" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+            <div class="grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 gap-6">
+
+                <div class="xl:col-span-2 lg:col-span-1">
+                    <div class="bg-sky-600 text-white gap-10 h-full w-full p-7 space-y-6 lg:space-y-0">
+                        <a href="/" class="font-semibold tracking-widest uppercase">BPNG</a>
+
+                        <div class="flex flex-col justify-center text-center h-full">
+                            <h1 class="text-3xl/tight mb-4">Welcome Back!</h1>
+                            <p class="text-gray-200 font-normal leading-relaxed">To keep connected with us please login
+                                with your personal info</p>
+                            <div class="my-8">
+                                <a href="/login"
+                                   class="border text-white font-medium text-sm rounded-full transition-all duration-300 hover:bg-white hover:text-black focus:bg-white focus:text-black px-14 py-2.5">Sign
+                                    In</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="xl:col-span-3 lg:col-span-2 lg:m-10 m-5">
+                    <div class="text-center">
+                        <div>
+                            <h1 class="text-3xl/tight text-sky-600 mb-3">Create Account</h1>
+
+                            <div class="flex items-center justify-center gap-2 my-5">
+                                <a href=""
+                                   class="border rounded-full flex items-center justify-center transition-all duration-300 focus:bg-sky-600 focus:text-white hover:bg-sky-600 hover:text-white h-10 w-10">
+                                    <i class="fa-brands fa-vk"></i>
+                                </a>
+                                <a href=""
+                                   class="border rounded-full flex items-center justify-center transition-all duration-300 focus:bg-sky-600 focus:text-white hover:bg-sky-600 hover:text-white h-10 w-10">
+                                    <i class="fa-brands fa-google"></i>
+                                </a>
+                                <a href=""
+                                   class="border rounded-full flex items-center justify-center transition-all duration-300 focus:bg-sky-600 focus:text-white hover:bg-sky-600 hover:text-white h-10 w-10">
+                                    <i class="fa-brands fa-telegram"></i>
+                                </a>
+                            </div>
+
+                            <p class="text-sm font-medium leading-relaxed">Or use your email for registration</p>
+                        </div>
+
+                        <form th:action="@{/registration}" method="post" th:object="${user}">
+                            <div class="space-y-5 mt-10">
+                                <div class="relative">
+                                    <input class="text-gray-500 border-gray-300 focus:ring-0 focus:border-gray-400 text-sm rounded-lg py-2.5 px-4 w-full ps-11"
+                                           type="text" th:field="*{username}" placeholder="Name"/>
+                                    <div class="absolute text-sky-600 inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                </div>
+
+                                <div class="relative">
+                                    <input class="text-gray-500 border-gray-300 focus:ring-0 focus:border-gray-400 text-sm rounded-lg py-2.5 px-4 w-full ps-11"
+                                           type="email" th:field="*{email}" placeholder="Email"/>
+                                    <div class="absolute text-sky-600 inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                </div>
+
+                                <div class="relative password-container">
+                                    <input class="text-gray-500 border-gray-300 focus:ring-0 focus:border-gray-400 text-sm rounded-lg py-2.5 px-4 w-full ps-11"
+                                           id="password" type="password" th:field="*{password}" placeholder="Password"/>
+                                    <div class="absolute toggle-password">
+                                        <i class="fa-solid fa-eye" id="togglePassword"></i>
+                                    </div>
+                                    <div class="absolute text-sky-600 inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
+                                        <i class="fa-solid fa-lock"></i>
+                                    </div>
+                                </div>
+
+                                <div class="relative password-container">
+                                    <input class="text-gray-500 border-gray-300 focus:ring-0 focus:border-gray-400 text-sm rounded-lg py-2.5 px-4 w-full ps-11"
+                                           id="password2" type="password" th:field="*{password2}"
+                                           placeholder="Confirm password"/>
+                                    <div class="absolute toggle-password">
+                                        <i class="fa-solid fa-eye" id="togglePassword2"></i>
+                                    </div>
+                                    <div class="absolute text-sky-600 inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
+                                        <i class="fa-solid fa-lock"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- CSRF защита -->
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                            <div class="mt-8">
+                                <button class="bg-sky-600 text-white font-medium text-sm rounded-full px-14 py-3">Sign
+                                    Up
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/js/function.js"></script>
+</body>
+
+</html>
